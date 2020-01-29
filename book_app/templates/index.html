@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add book</h1>
+<form action="/create_book" method="POST">
+    {% csrf_token %}
+    Title:<input type="text" name="title"><br>
+   description: <input type="text" name="description"><br>
+    <input type="submit" value="Add">
+
+
+</form><br>
+    <table>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>action</th>  
+    </tr>
+    {% for book in library %}
+    <tr> 
+        <td>{{book.id}}</td>
+        <td>{{book.title}}</td>
+        <td><a href="books/{{book.id}}">view</a></td>
+    </tr>
+    {% endfor %}
+</table>
+  
+</body>
+</html>
